@@ -5,10 +5,10 @@
 <b>Detailed Photo's:</b><br>
 <br><b>Profile's Screen:<br></b>
 <img src="https://user-images.githubusercontent.com/99321522/227909249-0ec32962-05ab-48df-9f00-644e714bae4f.png" width="370" height="800" />
-<img src="https://user-images.githubusercontent.com/99321522/227909249-0ec32962-05ab-48df-9f00-644e714bae4f.png" width="370" height="800" />
+<img src="https://user-images.githubusercontent.com/99321522/227909442-6396340d-5577-4f52-a5f8-235de50475b2.png" width="370" height="800" />
 <br>
 <hr>
-<br><b>Detail Screen:<br></b>
+<br><b>Menu Screen:<br></b>
 <img src="https://user-images.githubusercontent.com/99321522/226100605-6c2579c8-d0a8-4d4d-b248-d99c0066a336.png" width="370" height="800" />
 <br>
 <hr>
@@ -18,4 +18,5 @@ enenissoftware
 <hr>
 
 <b></b></>
+https://user-images.githubusercontent.com/99321522/227909442-6396340d-5577-4f52-a5f8-235de50475b2.png
 
