@@ -9,14 +9,20 @@
 <br>
 <hr>
 <br><b>Menu Screen:<br></b>
-<img src="https://user-images.githubusercontent.com/99321522/226100605-6c2579c8-d0a8-4d4d-b248-d99c0066a336.png" width="370" height="800" />
+<img src="https://user-images.githubusercontent.com/99321522/227909651-eda760b9-c2ad-4d09-930f-ec44e9f6975e.png" width="370" height="800" />
+<br>
+<hr>
+<br><b>Send Book Screen:<br></b>
+<img src="https://user-images.githubusercontent.com/99321522/227909824-19358702-33c3-43fe-b258-4f927458b608.png" width="370" height="800" />
 <br>
 <hr>
 <small>Thank you so much for reading and reviewing this far...</small><br>
 ~Enis Kayra Yavuz
 enenissoftware
+
 <hr>
 
 <b></b></>
 https://user-images.githubusercontent.com/99321522/227909442-6396340d-5577-4f52-a5f8-235de50475b2.png
 
+https://user-images.githubusercontent.com/99321522/227909651-eda760b9-c2ad-4d09-930f-ec44e9f6975e.png
