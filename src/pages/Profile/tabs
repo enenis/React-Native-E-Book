@@ -1,0 +1,97 @@
+// import React, { useState, useEffect } from 'react';
+// import { View, Text, Image, TouchableOpacity, Button } from 'react-native';
+// import { storage } from 'firebase';
+
+// function Profile({userId}) {
+//   const [image, setImage] = useState(null);
+
+//   const storageRef = storage.ref().child(`profil_resimleri/${userId}.jpg`);
+
+//   const pickImage = async () => {
+//     // ...
+//   }
+
+//   useEffect(() => {
+//     // Profil resminin URL'sini al
+//     storageRef.getDownloadURL().then(url => {
+//       setImage(url);
+//     }).catch(error => {
+//       console.log('Profil resmi yüklenirken hata oluştu:', error);
+//     });
+//   }, [userId]);
+
+//   const deleteImage = async () => {
+//     // Profil resmini Firebase Storage'dan sil
+//     try {
+//       await storageRef.delete();
+//       setImage(null);
+//     } catch (error) {
+//       console.log('Profil resmi silinirken hata oluştu:', error);
+//     }
+//   }
+
+//   return (
+//     <View style={styles.container}>
+//       <TouchableOpacity style={styles.img_container} onPress={pickImage}>
+//         {image ? (
+//           <Image
+//             style={{width: 100, height: 100, borderRadius: 50}}
+//             source={{uri: image}}
+//           />
+//         ) : (
+//           <Text>Add Image</Text>
+//         )}
+//       </TouchableOpacity>
+//       <Button title="Delete" onPress={deleteImage} />
+//     </View>
+//   );
+// }
+
+// export default Profile;
+
+
+
+
+
+// function Profile() {
+//     const [image, setImage] = useState("");
+//     const storageRef = storage.ref().child(`profil_resimleri/${userId}.jpg`);
+  
+  
+//     const pickImage=async()=>{
+//       let result=await ImagePicker.launchImageLibrary({
+//         allowsEditing:true,
+//         aspect:[4,3],
+//         quality:1,
+//       })
+//       console.log(result);
+  
+//       if(!result.didCancel){
+//         // const pathToFile=`${utils.FilePath.PICTURES_DIRECTORY}/images/image`
+//         setImage(result.assets[0].uri)
+//         await reference.putFile(image)
+//         console.log("göster");
+//       }
+//     }
+  
+  
+    
+  
+  
+//     return (
+  
+//       <View style={styles.container}>
+//         <TouchableOpacity style={styles.img_container} onPress={pickImage}>
+        
+//         {
+//           image?<Image style={{width:100,height:100,borderRadius:50,}} source={{uri:image}} /> :<Text>add image</Text>
+//         }
+  
+//         </TouchableOpacity>
+//       <Button placeholder="Delete" onPress={()=>reference.delete(setImage(""))} />
+//       </View>
+//     );
+//   }
+  
+//   export default Profile;
+  
