@@ -25,7 +25,7 @@ function BookCard({item,onLike,route}) {
     const user = auth().currentUser;
       const userId = user.uid;
     database()
-      .ref(`/public-books/${item.id}/image`)
+      .ref(`/private-books/${userId}/${item.id}/image`)
       .on('value', snapshot => {
         
         setImages(snapshot.val());
@@ -35,8 +35,7 @@ function BookCard({item,onLike,route}) {
   // console.log(item.image);
 
   function goToProfile() {
-    const user = auth().currentUser;
-    navigation.navigate('UserProfile',)
+    navigation.navigate('UserProfile', { uid: otherUserId })
   }
 
 

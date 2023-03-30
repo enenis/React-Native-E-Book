@@ -10,9 +10,11 @@ import { utils } from '@react-native-firebase/app';
 import Button from '../../components/Button';
 import parsedContentData from '../../utils/parsedContentData';
 import BookCard from '../../components/BookCard';
+import BookCardProfile from '../../components/BookCardProfile';
 
 
-function Profile() {
+function Profile({route}) {
+  // const {item} = route.params;
     const [back, setBack] = useState("");
     const [image, setImage] = useState("");
     const [contentList,setContentList]=React.useState([])
@@ -31,56 +33,72 @@ function Profile() {
     
       
     },[])
+  // console.log(item.username);
   
-  
-    const pickImage=async()=>{
-      let result=await ImagePicker.launchImageLibrary({
-        allowsEditing:true,
-        aspect:[4,3],
-        quality:1,
-      })
-      console.log(result);
-    
-      if(!result.didCancel){
-        const user = auth().currentUser;
-        const fileUri = result.assets[0].uri;
-        setImage(fileUri);
-        const fileName = 'image.jpg';
-        const storageRef = storage().ref().child(`users/${user.uid}/profile/profil_resmi.jpg`);
-        storageRef.putFile(fileUri).then((snapshot) => {
-          console.log('Uploaded file successfully!');
-        }).catch((error) => {
-          console.error(error+" kapaaannn");
-        });
-      }
-    }
+    const pickImage = () => {
+      //It sends the photo uploaded by the user to the database.
+      const user = auth().currentUser;
+      const userId = user.uid;
+      const options = {
+        title: 'Titlee',
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
+      ImagePicker.launchImageLibrary(options, response => {
+        if (response.didCancel) {
+          // showMessage({
+          //   message: 'Something went wrong.',
+          //   type: 'danger',
+          // });
+        } else if (response.errorCode) {
+          // showMessage({
+          //   message: 'Something went wrong.',
+          //   type: 'danger',
+          // });
+        } else {
+          const path = response.assets[0].uri;
+          setImage(path)
+          database().ref(`users/${userId}/photos/profile`).set(path);
+        }
+      });
+    };
 
-    const pickBack=async()=>{
-      let result=await ImagePicker.launchImageLibrary({
-        allowsEditing:true,
-        aspect:[4,3],
-        quality:1,
-      })
-      console.log(result);
-    
-      if(!result.didCancel){
-        const user = auth().currentUser;
-        const fileUri = result.assets[0].uri;
-        setBack(fileUri);
-        const fileName = 'image.jpg';
-        const storageRef = storage().ref().child(`users/${user.uid}/profile/back.jpg`);
-        storageRef.putFile(fileUri).then((snapshot) => {
-          console.log('Uploaded file successfully!');
-        }).catch((error) => {
-          console.error(error);
-        });
-      }
-    }
+    const pickBack = () => {
+      //It sends the photo uploaded by the user to the database.
+      const user = auth().currentUser;
+      const userId = user.uid;
+      const options = {
+        title: 'Titlee',
+        storageOptions: {
+          skipBackup: true,
+          path: 'images',
+        },
+      };
+      ImagePicker.launchImageLibrary(options, response => {
+        if (response.didCancel) {
+          // showMessage({
+          //   message: 'Something went wrong.',
+          //   type: 'danger',
+          // });
+        } else if (response.errorCode) {
+          // showMessage({
+          //   message: 'Something went wrong.',
+          //   type: 'danger',
+          // });
+        } else {
+          const path = response.assets[0].uri;
+          const tilt=database().ref(`users/${userId}/photos/profile-back`).set(path);
+          setImage(tilt)
+        }
+      });
+    };
   
     const deleteImage = async () => {
       const user = auth().currentUser;
       // const storageRef = storage().ref().child(`users/${currentUser.uid}/${user.uid}.jpg`);
-      const storageRef = storage().ref().child(`users/${user.uid}/profile/profil_resmi.jpg`);
+      const storageRef = database().ref(`users/${user.uid}/profile/profil_resmi.jpg`).path(fileUri)
       
       try {
         await storageRef.delete();
@@ -92,27 +110,37 @@ function Profile() {
     };
 
     useEffect(() => {
+      //It pull the photos from the database.
       const user = auth().currentUser;
-      const storageRef = storage().ref().child(`users/${user.uid}/profile/profil_resmi.jpg`);
-      storageRef.getDownloadURL().then((url) => {
-        setImage(url);
-      }).catch((error) => {
-        console.log(error);
-      });
+      const userId = user.uid;
+      database()
+        .ref(`users/${userId}/photos/profile`)
+        .on('value', snapshot => {
+          setImage(snapshot.val());
+        });
     }, []);
 
     useEffect(() => {
+      //It pull the photos from the database.
       const user = auth().currentUser;
-      const storageRef = storage().ref().child(`users/${user.uid}/profile/back.jpg`);
-      storageRef.getDownloadURL().then((url) => {
-        setBack(url);
-      }).catch((error) => {
-        console.log(error);
-      });
+      const userId = user.uid;
+      database()
+        .ref(`users/${userId}/photos/profile-back`)
+        .on('value', snapshot => {
+          setBack(snapshot.val());
+        });
     }, []);
+
+    function onBanane(item) {
+      console.log(item.like);
+      const user=auth().currentUser
+      database().ref(`private-books/${user.uid}/${item.id}`).update({like:item.like+1})
+     
+      
+    }
     
   
-    const renderItemShown=({item})=><BookCard item={item} />
+    const renderItemShown=({item})=><BookCardProfile item={item} onLike={()=>onBanane(item)} />
 
     return (
   

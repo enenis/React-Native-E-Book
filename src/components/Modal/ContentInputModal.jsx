@@ -22,9 +22,9 @@ function ContentInputModal({visible,onClose,onSend}) {
             console.log("Empty Space");
             return
         }
-        const imageUrl=bookName.split(" ").join("")
+        
         // console.log(imageUrl);
-        onSend(bookName,bookDesc,bookWrit,imageUrl)
+        onSend(bookName,bookDesc,bookWrit,image)
         setBookName(null)
         setBookDesc(null)
         setBookWrit(null)

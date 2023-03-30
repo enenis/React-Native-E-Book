@@ -15,7 +15,7 @@ function Login({navigation}) {
    async function handleFormSubmit(formValues) {
         try {
             await auth().signInWithEmailAndPassword(formValues.usermail,formValues.password)
-            navigation.navigate("ProfilePage")
+            navigation.navigate("ProfilePage",{item})
         } catch (error) {
             console.log(error);
         }
