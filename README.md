@@ -4,6 +4,7 @@
 <hr>
 <b>Detailed Photo's:</b><br>
 <br><b>Profile's Screen:<br></b>
+<small></small>
 <img src="https://user-images.githubusercontent.com/99321522/227909249-0ec32962-05ab-48df-9f00-644e714bae4f.png" width="370" height="800" />
 <img src="https://user-images.githubusercontent.com/99321522/227909442-6396340d-5577-4f52-a5f8-235de50475b2.png" width="370" height="800" />
 <br>
